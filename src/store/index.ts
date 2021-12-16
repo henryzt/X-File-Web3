@@ -30,6 +30,10 @@ export default createStore({
       }else{
         window.localStorage.removeItem("lastLoggedIn")
       }
+    },
+    setChainName(state){
+      const ethereum = window.ethereum;
+      state.chainName = chains[ethereum.chainId] ?? ethereum.chainId;
     }
   },
   actions: {
@@ -42,7 +46,7 @@ export default createStore({
       }
       state.provider = ethereum;
       state.web3 = new Web3(ethereum);
-      state.chainName = chains[ethereum.chainId] ?? ethereum.chainId;
+      commit("setChainName");
       console.log("ether", ethereum, "web3", state.web3);
 
       ethereum.on('chainChanged', ()=>{
@@ -70,6 +74,7 @@ export default createStore({
         await window.ethereum.request({ method: 'eth_requestAccounts' })
         .then((accs: any) => {
           commit("setAccount", accs);
+          commit("setChainName");
         });
       } catch (error) {
         console.log("User denied account access", error);

@@ -1,6 +1,9 @@
 <template>
   <div v-if="!account" @click="login" class="red-button">Connect Wallet</div>
-  <div v-else>{{ account }} | {{ chainName }}</div>
+  <div v-else class="flex flex-col items-end">
+    <div class="account">{{ account }}</div>
+    <div class="network">· {{ chainName }}</div>
+  </div>
 </template>
 
 <script lang="ts">
@@ -30,4 +33,11 @@ export default class Logo extends Vue {
 </script>
 
 <style scoped>
+.account {
+  @apply w-60 overflow-ellipsis overflow-hidden font-display font-bold text-xl;
+}
+
+.network {
+  @apply bg-mainRed text-white border-black border-2 rounded-full px-3 text-xs font-medium font-display;
+}
 </style>
