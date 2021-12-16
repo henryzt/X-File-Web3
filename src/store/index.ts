@@ -8,7 +8,7 @@ export default createStore({
   state: {
     provider: {} as any,
     web3: {} as any,
-    account: {},
+    account: null,
     solApp: null,
   },
   mutations: {
@@ -40,8 +40,8 @@ export default createStore({
     // 连接钱包
     async login({ state }) {
       try {
-        await window.ethereum.enable();
-        state.web3.eth.getAccounts().then((accs: any) => {
+        await window.ethereum.request({ method: 'eth_requestAccounts' })
+        .then((accs: any) => {
           console.log("henryDebug accounts", accs);
           state.account = accs[0];
         });

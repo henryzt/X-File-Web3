@@ -4,10 +4,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700;800&display=swap');
 
 .border {
-  border: 2px solid black;
-  @apply overflow-hidden border-black rounded-lg;
+  @apply overflow-hidden border-black rounded-lg border-2;
 }
 
 textarea:focus, input:focus{
   outline: none;
+}
+
+.red-button {
+  @apply border;
+  @apply text-white font-display text-sm font-bold bg-mainRed rounded-full px-5 py-2 cursor-pointer;
 }

@@ -1,4 +1,5 @@
 <template>
+  <UserStatus class="fixed md:right-16 top-10 right-7" />
   <div class="home">
     <Logo class="py-10" :large="true" />
     <SearchBar />
@@ -10,11 +11,13 @@
 import { Options, Vue } from "vue-class-component";
 import SearchBar from "@/components/SearchBar.vue";
 import Logo from "@/components/Logo.vue";
+import UserStatus from "@/components/UserStatus.vue";
 
 @Options({
   components: {
     SearchBar,
-    Logo
+    Logo,
+    UserStatus
   },
 })
 export default class Home extends Vue {}
