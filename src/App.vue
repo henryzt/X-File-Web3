@@ -8,14 +8,18 @@
 
 <script lang="ts">
 /* eslint-disable */
-import Web3 from "web3";
 import { Options, Vue } from "vue-class-component";
+import Web3 from "web3";
+// @ts-expect-error
+import contract from "truffle-contract";
+import ensTitle from '../build/contracts/EnsTitle.json';
 
 @Options({})
 export default class App extends Vue {
   provider: any  = {};
   web3: any = {};
   account = {};
+  titleApp: any = {};
 
   async initWeb3Account() {
     if (window.ethereum) {
@@ -39,7 +43,14 @@ export default class App extends Vue {
     });
   }
 
-  async initContract() {}
+  async initContract() {
+    const titleContract = contract(ensTitle)
+    titleContract.setProvider(this.provider)
+    this.titleApp = await titleContract.deployed()
+    console.log("contract", this.titleApp)
+    const res = await this.titleApp.getTitles("formatz.eth");
+    console.log(res)
+  }
 
   async getCrowdInfo() {}
 
