@@ -42,8 +42,7 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function",
-      "constant": true
+      "type": "function"
     }
   ],
   "metadata": "{\"compiler\":{\"version\":\"0.8.10+commit.fc410830\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"string\",\"name\":\"domainPrefix\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"newTitle\",\"type\":\"string\"}],\"name\":\"addTitle\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"domainPrefix\",\"type\":\"string\"}],\"name\":\"getTitles\",\"outputs\":[{\"internalType\":\"string[]\",\"name\":\"\",\"type\":\"string[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/EnsTitle.sol\":\"EnsTitle\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/EnsTitle.sol\":{\"keccak256\":\"0x04bcf43a47013da29642a6bbd14151ecab7b07d5e60cc75617bd17bfe88fd7d1\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://c5a9df1b1c010dfab702c5afeb56a6b6859685e4614038e5803cc88c06ff3012\",\"dweb:/ipfs/QmXnhH9hSz4Mz8Xzy9kUom7m4FSGcGcGJLTFEegCxbJ3oT\"]},\"project:/contracts/IEns.sol\":{\"keccak256\":\"0xbf4013d9098a3442da6e5915b0f33695a7a551862f68d2a68b2c908d3ffa5465\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://d7528352c7fab98acdc60040c36c638fa0325f751b95e8c53d2e215f7bb2a05c\",\"dweb:/ipfs/QmT7egFmouFKgVq6bNbq1XZ1jaYU6fUmPCPrG1Lr2sKa29\"]}},\"version\":1}",
@@ -11940,8 +11939,7 @@
     }
   },
   "schemaVersion": "3.4.3",
-  "updatedAt": "2021-12-15T09:22:17.957Z",
-  "networkType": "ethereum",
+  "updatedAt": "2021-12-16T11:16:04.804Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},
