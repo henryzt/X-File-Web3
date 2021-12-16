@@ -1,16 +1,20 @@
 <template>
   <div class="home">
+    <Logo class="py-10" :large="true" />
     <SearchBar />
+    <div class="my-20 font-display font-medium green-underline">Go to my profile</div>
   </div>
 </template>
 
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
-import SearchBar from "@/components/SearchBar.vue"; // @ is an alias to /src
+import SearchBar from "@/components/SearchBar.vue";
+import Logo from "@/components/Logo.vue";
 
 @Options({
   components: {
     SearchBar,
+    Logo
   },
 })
 export default class Home extends Vue {}
@@ -22,5 +26,12 @@ export default class Home extends Vue {}
   height: 100vh;
   background: #fbf8f3;
   @apply flex flex-col justify-center;
+}
+
+.green-underline{
+  text-decoration: underline;
+  text-decoration-color: theme('colors.mainGreen');
+  text-decoration-thickness: 2px;
+  cursor: pointer;
 }
 </style>
