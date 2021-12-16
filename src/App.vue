@@ -8,56 +8,12 @@
 
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
-import Web3 from "web3";
-// @ts-expect-error typing
-import contract from "truffle-contract";
-import ensTitle from "../build/contracts/EnsTitle.json";
 
 @Options({})
 export default class App extends Vue {
-  provider: any = {};
-  web3: any = {};
-  account = {};
-  titleApp: any = {};
-
-  async initWeb3Account() {
-    if (window.ethereum) {
-      this.provider = window.ethereum;
-    } else if (window.web3) {
-      console.log("User denied account access");
-    } else {
-      this.provider = new Web3.providers.HttpProvider("http://127.0.0.1:8545");
-    }
-    this.web3 = new Web3(this.provider);
-    console.log("henryDebug this.provider", this.provider);
-    console.log("henryDebug this.web3", this.web3);
-  }
-
-  async initContract() {
-    const titleContract = contract(ensTitle);
-    titleContract.setProvider(this.provider);
-    this.titleApp = await titleContract.deployed();
-    console.log("contract", this.titleApp);
-    this.$store.commit("setApp", this.titleApp);
-  }
-
-  async login() {
-    try {
-      await window.ethereum.enable();
-      this.web3.eth.getAccounts().then((accs: any) => {
-        console.log("henryDebug accs", accs);
-        this.account = accs[0];
-      });
-    } catch (error) {
-      console.log("User denied account access");
-    }
-  }
-
   async created(): Promise<void> {
-    //  初始化 web3及账号
-    await this.initWeb3Account();
-    //  初始化合约实例
-    await this.initContract();
+    await this.$store.dispatch('initWeb3Account');
+    await this.$store.dispatch('initContract');
   }
 }
 </script>
