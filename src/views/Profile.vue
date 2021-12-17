@@ -16,10 +16,25 @@
         overflow-hidden overflow-ellipsis
       "
     >
+      <div v-if="profile">
+        <img
+          class="icon"
+          :src="'/img/lvs/lv' + profile.duration_level + '.jpeg'"
+        />
+      </div>
+      <!-- domain -->
       <div class="font-display font-extrabold text-mainGreen text-3xl">
         {{ ens }}.eth
       </div>
-      <div class="leading-10">No collections yet</div>
+      <!-- collections -->
+      <div v-if="profile" class="leading-10">
+        <span>Activity level - </span>
+        <img
+          class="icon"
+          :src="'/img/lvs/ac' + profile.active_level + '.jpeg'"
+        />
+      </div>
+      <div v-else class="leading-10">No collections yet</div>
       <div class="leading-5 text-xs">{{ address }}</div>
     </div>
     <div class="w-2/3">
@@ -64,11 +79,13 @@ import TitleList from "@/components/TitleList.vue";
   watch: {
     "$store.state.solApp"() {
       this.getTitles();
+      this.getProfile();
     },
     $route() {
       this.titles = [];
       this.address = "Loading Address...";
       this.getTitles();
+      this.getProfile();
     },
   },
 })
@@ -77,9 +94,11 @@ export default class Profile extends Vue {
   ens = "";
   address = "Loading Address...";
   loading = true;
+  profile = null;
 
   mounted(): void {
     this.getTitles();
+    this.getProfile();
   }
 
   get isOwner(): boolean {
@@ -102,13 +121,19 @@ export default class Profile extends Vue {
   }
 
   async getProfile(): Promise<void> {
-    const profile = await fetch(
-      `http://43.130.232.102:8080/q?ens=${this.ens}.eth`
-    );
+    const res = await fetch(`http://43.130.232.102:8080/q?ens=${this.ens}.eth`);
+    const profile = await res.json();
     console.log(profile);
+    if (profile?.status === 0) {
+      this.profile = profile.data;
+    }
   }
 }
 </script>
 
 <style scoped>
+.icon {
+  max-width: 30px;
+  display: inline;
+}
 </style>
