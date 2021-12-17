@@ -1,8 +1,11 @@
 import { createStore } from 'vuex';
+import { markRaw } from 'vue';
 import Web3 from "web3";
 import detectEthereumProvider from '@metamask/detect-provider';
 // @ts-expect-error typing
 import contract from "truffle-contract";
+// @ts-expect-error typing
+import ENS, { getEnsAddress } from '@ensdomains/ensjs'
 import ensTitle from "../../build/contracts/EnsTitle.json";
 
 const chains: any = {
@@ -14,6 +17,7 @@ export default createStore({
   state: {
     provider: {} as any,
     web3: {} as any,
+    ens: {} as any,
     account: null,
     solApp: null,
     chainName: null,
@@ -46,6 +50,9 @@ export default createStore({
       }
       state.provider = ethereum;
       state.web3 = new Web3(ethereum);
+      const ens = new ENS({ provider: ethereum, ensAddress: getEnsAddress('1') });
+      state.ens = markRaw(ens);
+
       commit("setChainName");
       console.log("ether", ethereum, "web3", state.web3);
 

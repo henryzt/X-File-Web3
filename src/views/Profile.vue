@@ -5,8 +5,13 @@
     <UserStatus />
   </div>
   <div class="flex w-auto max-w-7xl mx-auto px-20">
-    <div class="w-1/3 text-right px-10 border-r-2 mr-10 border-dashed">Left</div>
+    <div class="w-1/3 text-right px-5 border-r-2 mr-10 border-dashed overflow-hidden overflow-ellipsis">
+      <div class="font-display font-extrabold text-mainGreen text-3xl">{{ens}}.eth</div>
+      <div class="leading-10">No collections yet</div>
+      <div class="leading-5 text-xs">{{ address }}</div>
+    </div>
     <div class="w-2/3">
+      <div class="text-left text-3xl font-medium">Titles</div>
       <TitleList :titles="titles" />
     </div>
   </div>
@@ -39,6 +44,7 @@ import TitleList from "@/components/TitleList.vue";
 export default class Profile extends Vue {
   titles = [];
   ens = "";
+  address = "Loading Address";
   loading = true;
 
   mounted(): void {
@@ -50,8 +56,9 @@ export default class Profile extends Vue {
     if (!ens) return;
     this.ens = (ens as string).replace(".eth", "");
     this.loading = true;
-    this.titles = await this.$store.state.solApp.getTitles(this.ens);
+    this.titles = await this.$store.state.solApp?.getTitles(this.ens);
     this.loading = false;
+    this.address = await this.$store.state.ens?.name(this.ens + ".eth").getAddress()
   }
 }
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <div v-if="titles?.length" class="border bg-mainBg">
+  <div v-if="titles?.length" class="border bg-mainBg py-3">
     <div v-for="(title, index) in titles" :key="title">
       <div class="grid grid-cols-8">
         <div class="number">{{ index + 1 }}</div>
@@ -38,7 +38,8 @@ export default class TitleList extends Vue {}
           h-10
           leading-9
           my-auto
-          ml-6;
+          ml-auto
+          mr-2;
 }
 
 .title {
@@ -48,7 +49,8 @@ export default class TitleList extends Vue {}
           rounded-lg
           px-3
           py-1
-          m-5
+          mx-5
+          my-3
           text-left
           font-display font-bold
           bg-white;
