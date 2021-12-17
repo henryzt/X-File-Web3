@@ -1,5 +1,5 @@
 <template>
-  <div :class="['text-mainGreen', 'font-bold', large ? 'text-6xl' : 'text-xl']">
+  <div :class="['text-mainGreen', 'font-bold', large ? 'text-6xl' : 'text-3xl']">
     X-Files
   </div>
 </template>

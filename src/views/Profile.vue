@@ -1,7 +1,7 @@
 <template>
-  <div class="header flex row justify-between">
+  <div class="header flex row justify-between p-20">
     <Logo />
-    <SearchBar />
+    <SearchBar class="flex-grow" />
     <UserStatus />
   </div>
   <div>
@@ -24,14 +24,27 @@ import UserStatus from "@/components/UserStatus.vue";
     UserStatus,
   },
   props: {},
+  watch: {
+    "$store.state.solApp"() {
+      this.getTitles();
+    },
+    $route() {
+      this.getTitles();
+    }
+  },
 })
 export default class Profile extends Vue {
   titles = [];
+  ens = "";
 
-  async mounted(): Promise<void> {
-    let ens = this.$route.params.id;
-    ens = (ens as string).replace(".eth", "");
-    this.titles = await this.$store.state.solApp.getTitles(ens);
+  mounted(): void {
+    this.getTitles();
+  }
+
+  async getTitles(): Promise<void> {
+    const ens = this.$route.params.id;
+    this.ens = (ens as string).replace(".eth", "");
+    this.titles = await this.$store.state.solApp.getTitles(this.ens);
   }
 }
 </script>
