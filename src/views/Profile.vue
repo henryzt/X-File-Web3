@@ -80,14 +80,13 @@ import TitleList from "@/components/TitleList.vue";
   props: {},
   watch: {
     "$store.state.solApp"() {
-      this.getTitles();
-      this.getProfile();
+      this.load();
     },
     $route() {
+      this.profile = null;
       this.titles = [];
       this.address = "Loading Address...";
-      this.getTitles();
-      this.getProfile();
+      this.load();
     },
   },
 })
@@ -99,6 +98,10 @@ export default class Profile extends Vue {
   profile = null;
 
   mounted(): void {
+    this.load();
+  }
+
+  load(): void {
     this.getTitles();
     this.getProfile();
   }
@@ -123,7 +126,9 @@ export default class Profile extends Vue {
   }
 
   async getProfile(): Promise<void> {
-    const res = await fetch(`http://43.130.232.102:8080/q?ens=${this.ens}.eth`);
+    const res = await fetch(
+      `https://cors-where.herokuapp.com/http://43.130.232.102:8080/q?ens=${this.ens}.eth`
+    );
     const profile = await res.json();
     console.log(profile);
     if (profile?.status === 0) {

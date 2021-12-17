@@ -17,7 +17,7 @@ textarea:focus, input:focus{
 }
 
 .modal {
-  @apply border fixed bg-white w-5/12 h-96 z-20 text-left p-10;
+  @apply border fixed bg-white w-5/12 max-w-lg h-96 z-20 text-left p-10;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
