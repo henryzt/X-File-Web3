@@ -100,6 +100,13 @@ export default class Profile extends Vue {
       this.address = "Account not found";
     }
   }
+
+  async getProfile(): Promise<void> {
+    const profile = await fetch(
+      `http://43.130.232.102:8080/q?ens=${this.ens}.eth`
+    );
+    console.log(profile);
+  }
 }
 </script>
 
