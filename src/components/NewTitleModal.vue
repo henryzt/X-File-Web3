@@ -41,9 +41,11 @@ export default class NewTitleModal extends Vue {
   }
 
   async submitTitle(): Promise<void> {
-    const ens = this.$store.state.ensName;
+    const ens = this.$store.state.ensName?.replace(".eth", "");
     if (this.content && ens) {
-      const res = await this.$store.state.solApp?.addTitle(ens, this.content);
+      const res = await this.$store.state.solApp?.addTitle(ens, this.content, {
+        from: this.$store.state.account
+      });
       console.warn(res);
     }
   }

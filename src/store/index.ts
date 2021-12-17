@@ -31,6 +31,7 @@ export default createStore({
       console.log("henryDebug accounts", accounts);
       const address = accounts[0]
       state.account = address;
+      state.web3.eth.defaultAccount = address;
       if(state.account){
         window.localStorage.setItem("lastLoggedIn", address);
         let ensName;

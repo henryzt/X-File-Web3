@@ -30,7 +30,9 @@ export default class Home extends Vue {
   goToProfile(): void {
     if (this.ensName) {
       this.$router.push(`/profile/${this.ensName}`);
-    } else {
+    } else if(this.$store.state.account){
+      alert("You don't have an ENS domain yet, register now!")
+    }else{
       this.$store.dispatch("login");
     }
   }
