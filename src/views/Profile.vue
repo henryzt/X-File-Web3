@@ -5,9 +5,7 @@
     <UserStatus />
   </div>
   <div>
-    <div v-for="title in titles" :key="title">
-      {{ title }}
-    </div>
+    <TitleList :titles="titles" />
   </div>
 </template>
 
@@ -16,12 +14,14 @@ import { Options, Vue } from "vue-class-component";
 import SearchBar from "@/components/SearchBar.vue";
 import Logo from "@/components/Logo.vue";
 import UserStatus from "@/components/UserStatus.vue";
+import TitleList from "@/components/TitleList.vue";
 
 @Options({
   components: {
     SearchBar,
     Logo,
     UserStatus,
+    TitleList,
   },
   props: {},
   watch: {
@@ -30,7 +30,7 @@ import UserStatus from "@/components/UserStatus.vue";
     },
     $route() {
       this.getTitles();
-    }
+    },
   },
 })
 export default class Profile extends Vue {
@@ -43,6 +43,7 @@ export default class Profile extends Vue {
 
   async getTitles(): Promise<void> {
     const ens = this.$route.params.id;
+    if (!ens) return;
     this.ens = (ens as string).replace(".eth", "");
     this.titles = await this.$store.state.solApp.getTitles(this.ens);
   }

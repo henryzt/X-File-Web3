@@ -1,5 +1,13 @@
 <template>
-  <div :class="['text-mainGreen', 'font-bold', large ? 'text-6xl' : 'text-3xl']">
+  <div
+    @click="$router.push('/')"
+    :class="[
+      'text-mainGreen',
+      'cursor-pointer',
+      'font-bold',
+      large ? 'text-6xl' : 'text-3xl',
+    ]"
+  >
     X-Files
   </div>
 </template>

@@ -5,6 +5,7 @@
         class="w-full h-9 px-3"
         placeholder="type an ENS domain"
         v-model="content"
+        id="domain"
         @keyup.enter="doSearch"
       />
       <div class="search" @click="doSearch">Search</div>

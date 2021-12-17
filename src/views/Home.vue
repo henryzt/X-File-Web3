@@ -1,7 +1,7 @@
 <template>
   <UserStatus class="fixed md:right-16 top-10 right-7" />
   <div class="home">
-    <Logo class="py-10" :large="true" />
+    <Logo class="my-10" :large="true" />
     <SearchBar />
     <div class="my-20 font-display font-medium green-underline">Go to my profile</div>
   </div>
