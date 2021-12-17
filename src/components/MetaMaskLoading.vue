@@ -3,7 +3,7 @@
     <div class="overlay"></div>
     <div class="modal">
       <img class="animate-pulse" src="/img/MetaMask.png" />
-      <div class="text-xs text-center font-bold">Waiting for transaction...</div>
+      <div class="text-xs text-center font-bold">Waiting for confirmation...</div>
     </div>
   </div>
 </template>

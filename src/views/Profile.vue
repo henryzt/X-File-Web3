@@ -27,13 +27,13 @@
       <div v-if="isOwner" class="border grid grid-cols-8 p-5 mb-10">
         <div class="text-5xl pt-2">👋</div>
         <div class="col-span-7 font-display text-2xl text-left">
-        <div class="font-extrabold">Hello, {{ ens }}</div>
+          <div class="font-extrabold">Hello, {{ ens }}</div>
           <div class="text-lg">This is your ether profile page</div>
         </div>
       </div>
       <!-- title list -->
       <div class="text-left text-3xl font-medium">Titles</div>
-      <TitleList :titles="titles" :isOwner="isOwner"/>
+      <TitleList :titles="titles" :isOwner="isOwner" />
       <!-- title loading -->
       <div
         class="border bg-mainBg py-3 font-display text-lg"
@@ -67,7 +67,7 @@ import TitleList from "@/components/TitleList.vue";
     },
     $route() {
       this.titles = [];
-      this.address = "Loading Address";
+      this.address = "Loading Address...";
       this.getTitles();
     },
   },
@@ -75,7 +75,7 @@ import TitleList from "@/components/TitleList.vue";
 export default class Profile extends Vue {
   titles = [];
   ens = "";
-  address = "Loading Address";
+  address = "Loading Address...";
   loading = true;
 
   mounted(): void {
@@ -96,6 +96,9 @@ export default class Profile extends Vue {
     this.address = await this.$store.state.ens
       ?.name(this.ens + ".eth")
       .getAddress();
+    if (this.address == "0x0000000000000000000000000000000000000000") {
+      this.address = "Account not found";
+    }
   }
 }
 </script>
