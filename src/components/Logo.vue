@@ -4,7 +4,8 @@
     :class="[
       'text-mainGreen',
       'cursor-pointer',
-      'font-bold',
+      'font-display',
+      'font-extrabold',
       large ? 'text-6xl' : 'text-3xl',
     ]"
   >

@@ -37,7 +37,7 @@
       <!-- title loading -->
       <div
         class="border bg-mainBg py-3 font-display text-lg"
-        v-if="!titles.length"
+        v-if="!titles?.length"
       >
         <span class="animate-pulse" v-if="loading">Loading...</span>
         <span v-else>No titles found for this domain</span>

@@ -25,6 +25,7 @@ export default class SearchBar extends Vue {
   content = "";
 
   doSearch(): void {
+    if (!this.content) return;
     this.$router.push(`/profile/${this.content}`);
   }
 }

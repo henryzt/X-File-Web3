@@ -10,22 +10,22 @@
     </div>
     <!-- add new -->
     <div v-if="isOwner" class="grid grid-cols-8 cursor-pointer">
-      <div class="number"> + </div>
-      <div class="title opacity-60 text-mainGreen">
+      <div class="number">+</div>
+      <div class="title opacity-60 text-mainGreen" @click="openNewTitleModal">
         Add a new title
       </div>
     </div>
   </div>
-  <Modal />
+  <NewTitleModal ref="modal" />
 </template>
 
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
-import Modal from "@/components/Modal.vue"
+import NewTitleModal from "@/components/NewTitleModal.vue";
 
 @Options({
   components: {
-    Modal,
+    NewTitleModal,
   },
   props: {
     titles: {
@@ -38,7 +38,12 @@ import Modal from "@/components/Modal.vue"
     },
   },
 })
-export default class TitleList extends Vue {}
+export default class TitleList extends Vue {
+  openNewTitleModal(): void {
+    // @ts-expect-error unknown
+    this.$refs.modal.open();
+  }
+}
 </script>
 
 <style scoped>
