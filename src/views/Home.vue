@@ -3,7 +3,10 @@
   <div class="home">
     <Logo class="my-10" :large="true" />
     <SearchBar />
-    <div class="my-20 font-display font-medium green-underline" @click="goToProfile">
+    <div
+      class="my-20 font-display font-medium green-underline"
+      @click="goToProfile"
+    >
       Go to my profile
     </div>
   </div>
@@ -30,9 +33,9 @@ export default class Home extends Vue {
   goToProfile(): void {
     if (this.ensName) {
       this.$router.push(`/profile/${this.ensName}`);
-    } else if(this.$store.state.account){
-      alert("You don't have an ENS domain yet, register now!")
-    }else{
+    } else if (this.$store.state.account) {
+      alert("You don't have an ENS domain yet, register now!");
+    } else {
       this.$store.dispatch("login");
     }
   }
