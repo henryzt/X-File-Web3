@@ -44,7 +44,8 @@ export default createStore({
         }
         state.ensName = ensName;
       }else{
-        window.localStorage.removeItem("lastLoggedIn")
+        window.localStorage.removeItem("lastLoggedIn");
+        state.ensName = null;
       }
     },
     setChainName(state){

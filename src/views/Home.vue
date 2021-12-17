@@ -3,7 +3,9 @@
   <div class="home">
     <Logo class="my-10" :large="true" />
     <SearchBar />
-    <div class="my-20 font-display font-medium green-underline">Go to my profile</div>
+    <div class="my-20 font-display font-medium green-underline" @click="goToProfile">
+      Go to my profile
+    </div>
   </div>
 </template>
 
@@ -17,10 +19,22 @@ import UserStatus from "@/components/UserStatus.vue";
   components: {
     SearchBar,
     Logo,
-    UserStatus
+    UserStatus,
   },
 })
-export default class Home extends Vue {}
+export default class Home extends Vue {
+  get ensName(): string | null {
+    return this.$store.state.ensName;
+  }
+
+  goToProfile(): void {
+    if (this.ensName) {
+      this.$router.push(`/profile/${this.ensName}`);
+    } else {
+      this.$store.dispatch("login");
+    }
+  }
+}
 </script>
 
 <style scoped>
@@ -31,9 +45,9 @@ export default class Home extends Vue {}
   @apply flex flex-col justify-center;
 }
 
-.green-underline{
+.green-underline {
   text-decoration: underline;
-  text-decoration-color: theme('colors.mainGreen');
+  text-decoration-color: theme("colors.mainGreen");
   text-decoration-thickness: 2px;
   cursor: pointer;
 }

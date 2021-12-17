@@ -1,6 +1,6 @@
 <template>
   <div v-if="!account" @click="login" class="red-button">Connect Wallet</div>
-  <div v-else class="flex flex-col items-end">
+  <div v-else class="flex flex-col items-end cursor-pointer" @click="goToProfile">
     <div class="account text-right">{{ ensName ?? account }}</div>
     <div class="network">· {{ chainName }}</div>
   </div>
@@ -32,6 +32,12 @@ export default class Logo extends Vue {
 
   login(): void {
     this.$store.dispatch("login");
+  }
+
+  goToProfile(): void {
+    if(this.ensName) {
+      this.$router.push(`/profile/${this.ensName}`)
+    }
   }
 }
 </script>

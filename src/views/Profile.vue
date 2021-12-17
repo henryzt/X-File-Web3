@@ -5,15 +5,43 @@
     <UserStatus />
   </div>
   <div class="flex w-auto max-w-7xl mx-auto px-20">
-    <div class="w-1/3 text-right px-5 border-r-2 mr-10 border-dashed overflow-hidden overflow-ellipsis">
-      <div class="font-display font-extrabold text-mainGreen text-3xl">{{ens}}.eth</div>
+    <div
+      class="
+        w-1/3
+        text-right
+        px-5
+        border-r-2
+        mr-10
+        border-dashed
+        overflow-hidden overflow-ellipsis
+      "
+    >
+      <div class="font-display font-extrabold text-mainGreen text-3xl">
+        {{ ens }}.eth
+      </div>
       <div class="leading-10">No collections yet</div>
       <div class="leading-5 text-xs">{{ address }}</div>
     </div>
     <div class="w-2/3">
+      <!-- welcome notice -->
+      <div v-if="isOwner" class="border grid grid-cols-8 p-5 mb-10">
+        <div class="text-5xl pt-2">👋</div>
+        <div class="col-span-7 font-display text-2xl text-left">
+        <div class="font-extrabold">Hello, {{ ens }}</div>
+          <div class="text-lg">This is your ether profile page</div>
+        </div>
+      </div>
+      <!-- title list -->
       <div class="text-left text-3xl font-medium">Titles</div>
       <TitleList :titles="titles" />
-      <div class="border bg-mainBg py-3 font-display text-lg animate-pulse" v-if="loading">Loading...</div>
+      <!-- title loading -->
+      <div
+        class="border bg-mainBg py-3 font-display text-lg"
+        v-if="!titles.length"
+      >
+        <span class="animate-pulse" v-if="loading">Loading...</span>
+        <span v-else>No titles found for this domain</span>
+      </div>
     </div>
   </div>
 </template>
@@ -54,6 +82,10 @@ export default class Profile extends Vue {
     this.getTitles();
   }
 
+  get isOwner(): boolean {
+    return this.$store.state.ensName === this.ens + ".eth";
+  }
+
   async getTitles(): Promise<void> {
     const ens = this.$route.params.id;
     if (!ens) return;
@@ -61,7 +93,9 @@ export default class Profile extends Vue {
     this.loading = true;
     this.titles = await this.$store.state.solApp?.getTitles(this.ens);
     this.loading = false;
-    this.address = await this.$store.state.ens?.name(this.ens + ".eth").getAddress()
+    this.address = await this.$store.state.ens
+      ?.name(this.ens + ".eth")
+      .getAddress();
   }
 }
 </script>
