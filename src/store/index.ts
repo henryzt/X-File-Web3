@@ -22,6 +22,7 @@ export default createStore({
     solApp: null,
     ensName: null,
     chainName: null,
+    metaMaskLoading: false
   },
   mutations: {
     setApp(state, app) {
@@ -52,6 +53,9 @@ export default createStore({
     setChainName(state){
       const ethereum = window.ethereum;
       state.chainName = chains[ethereum.chainId] ?? ethereum.chainId;
+    },
+    setMetaLoading(state, loading){
+      state.metaMaskLoading = loading;
     }
   },
   actions: {
@@ -92,6 +96,7 @@ export default createStore({
     // 连接钱包
     async login({ commit }) {
       try {
+        commit("setMetaLoading", true);
         await window.ethereum.request({ method: 'eth_requestAccounts' })
         .then((accs: any) => {
           commit("setAccount", accs);
@@ -100,6 +105,7 @@ export default createStore({
       } catch (error) {
         console.log("User denied account access", error);
       }
+      commit("setMetaLoading", false);
     }
   },
   modules: {

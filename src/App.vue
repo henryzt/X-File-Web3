@@ -1,15 +1,17 @@
 <template>
-  <!-- <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/profile">Profile</router-link>
-  </div> -->
   <router-view />
+  <MetaMaskLoading />
 </template>
 
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
+import MetaMaskLoading from "@/components/MetaMaskLoading.vue"
 
-@Options({})
+@Options({
+  components: {
+    MetaMaskLoading,
+  },
+})
 export default class App extends Vue {
   async created(): Promise<void> {
     await this.$store.dispatch('initWeb3Account');

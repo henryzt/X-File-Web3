@@ -17,7 +17,11 @@
       changed once minted. The more title you have, the more expensive a new
       title will be.
     </div>
-    <div class="red-button inline-block mt-8 w-28 text-center float-right" @click="submitTitle">
+    <div
+      class="red-button mt-8 w-40 text-center mx-auto"
+      :class="[content ? '' : 'opacity-50']"
+      @click="submitTitle"
+    >
       Submit
     </div>
   </Modal>
@@ -43,10 +47,23 @@ export default class NewTitleModal extends Vue {
   async submitTitle(): Promise<void> {
     const ens = this.$store.state.ensName?.replace(".eth", "");
     if (this.content && ens) {
-      const res = await this.$store.state.solApp?.addTitle(ens, this.content, {
-        from: this.$store.state.account
-      });
-      console.warn(res);
+      this.show = false;
+      this.$store.commit("setMetaLoading", true);
+      try {
+        const res = await this.$store.state.solApp?.addTitle(
+          ens,
+          this.content,
+          {
+            from: this.$store.state.account,
+          }
+        );
+        console.warn(res);
+        this.content = "";
+      } catch (err) {
+        this.show = true;
+        console.error(err);
+      }
+      this.$store.commit("setMetaLoading", false);
     }
   }
 }
