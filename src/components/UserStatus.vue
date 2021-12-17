@@ -1,7 +1,7 @@
 <template>
   <div v-if="!account" @click="login" class="red-button">Connect Wallet</div>
   <div v-else class="flex flex-col items-end">
-    <div class="account">{{ account }}</div>
+    <div class="account text-right">{{ ensName ?? account }}</div>
     <div class="network">· {{ chainName }}</div>
   </div>
 </template>
@@ -20,6 +20,10 @@ import { Options, Vue } from "vue-class-component";
 export default class Logo extends Vue {
   get account(): string | null {
     return this.$store.state.account;
+  }
+
+  get ensName(): string | null {
+    return this.$store.state.ensName;
   }
 
   get chainName(): string | null {

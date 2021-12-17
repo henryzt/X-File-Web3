@@ -13,6 +13,7 @@
     <div class="w-2/3">
       <div class="text-left text-3xl font-medium">Titles</div>
       <TitleList :titles="titles" />
+      <div class="border bg-mainBg py-3 font-display text-lg animate-pulse" v-if="loading">Loading...</div>
     </div>
   </div>
 </template>
@@ -37,6 +38,8 @@ import TitleList from "@/components/TitleList.vue";
       this.getTitles();
     },
     $route() {
+      this.titles = [];
+      this.address = "Loading Address";
       this.getTitles();
     },
   },
@@ -54,7 +57,7 @@ export default class Profile extends Vue {
   async getTitles(): Promise<void> {
     const ens = this.$route.params.id;
     if (!ens) return;
-    this.ens = (ens as string).replace(".eth", "");
+    this.ens = (ens as string).toLowerCase().replace(".eth", "");
     this.loading = true;
     this.titles = await this.$store.state.solApp?.getTitles(this.ens);
     this.loading = false;

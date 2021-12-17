@@ -20,17 +20,29 @@ export default createStore({
     ens: {} as any,
     account: null,
     solApp: null,
+    ensName: null,
     chainName: null,
   },
   mutations: {
     setApp(state, app) {
       state.solApp = app
     },
-    setAccount(state, accounts) {
+    async setAccount(state, accounts) {
       console.log("henryDebug accounts", accounts);
-      state.account = accounts[0];
+      const address = accounts[0]
+      state.account = address;
       if(state.account){
-        window.localStorage.setItem("lastLoggedIn", accounts[0])
+        window.localStorage.setItem("lastLoggedIn", address);
+        let ensName;
+
+        ({ name: ensName } = await state.ens.getName(address))
+        state.ensName = ensName;
+        const addressCheck = await state.ens.name(ensName).getAddress();
+        // Check to be sure the reverse record is correct. skip check if the name is null
+        if(ensName == null || address.toLowerCase() != addressCheck.toLowerCase()) {
+          ensName = null;
+        }
+        state.ensName = ensName;
       }else{
         window.localStorage.removeItem("lastLoggedIn")
       }
