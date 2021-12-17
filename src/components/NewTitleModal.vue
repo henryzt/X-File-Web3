@@ -9,7 +9,7 @@
       class="border w-full h-12 px-3"
       placeholder="type your title here"
       v-model="content"
-      id="domain"
+      id="ens_title"
       @keyup.enter="doSearch"
     />
     <div class="mt-5">
@@ -59,6 +59,7 @@ export default class NewTitleModal extends Vue {
         );
         console.warn(res);
         this.content = "";
+        window.location.reload();
       } catch (err) {
         this.show = true;
         console.error(err);
