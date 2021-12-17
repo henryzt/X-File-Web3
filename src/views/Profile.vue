@@ -27,12 +27,14 @@
         {{ ens }}.eth
       </div>
       <!-- collections -->
-      <div v-if="profile" class="leading-10">
-        <span>Activity level - </span>
+      <div v-if="profile" class="my-5">
+        <span>Activity Level - </span>
         <img
           class="icon"
           :src="'/img/lvs/ac' + profile.active_level + '.jpeg'"
         />
+        <div>Account Value - {{ profile.tx_sum.toFixed(2) }} ETH</div>
+        <div>Transaction Count - {{ profile.tx_count }}</div>
       </div>
       <div v-else class="leading-10">No collections yet</div>
       <div class="leading-5 text-xs">{{ address }}</div>
