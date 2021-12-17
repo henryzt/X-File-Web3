@@ -1,5 +1,5 @@
 <template>
-  <div v-if="titles?.length" class="border bg-mainBg py-3">
+  <div v-if="isOwner || titles?.length" class="border bg-mainBg py-3">
     <div v-for="(title, index) in titles" :key="title">
       <div class="grid grid-cols-8">
         <div class="number">{{ index + 1 }}</div>
