@@ -11,17 +11,22 @@
     <!-- add new -->
     <div v-if="isOwner" class="grid grid-cols-8 cursor-pointer">
       <div class="number"> + </div>
-      <div class="title opacity-60 text-mainGreen ">
+      <div class="title opacity-60 text-mainGreen">
         Add a new title
       </div>
     </div>
   </div>
+  <Modal />
 </template>
 
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
+import Modal from "@/components/Modal.vue"
 
 @Options({
+  components: {
+    Modal,
+  },
   props: {
     titles: {
       type: Array,
