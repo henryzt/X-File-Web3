@@ -3,9 +3,16 @@
     <div v-for="(title, index) in titles" :key="title">
       <div class="grid grid-cols-8">
         <div class="number">{{ index + 1 }}</div>
-        <div class="title">
+        <div class="title border-dashed">
           {{ title }}
         </div>
+      </div>
+    </div>
+    <!-- add new -->
+    <div v-if="isOwner" class="grid grid-cols-8 cursor-pointer">
+      <div class="number"> + </div>
+      <div class="title opacity-60 text-mainGreen ">
+        Add a new title
       </div>
     </div>
   </div>
@@ -19,6 +26,10 @@ import { Options, Vue } from "vue-class-component";
     titles: {
       type: Array,
       default: [],
+    },
+    isOwner: {
+      type: Boolean,
+      default: false,
     },
   },
 })
@@ -45,7 +56,6 @@ export default class TitleList extends Vue {}
 .title {
   @apply col-span-7
           border-2 border-black
-          border-dashed
           rounded-lg
           px-3
           py-1
