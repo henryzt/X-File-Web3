@@ -57,6 +57,7 @@ export default class NewTitleModal extends Vue {
           this.content,
           {
             from: this.$store.state.account,
+            value: (0.001*(10**18)).toString()
           }
         );
         console.warn(res);
