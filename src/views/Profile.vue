@@ -50,7 +50,7 @@
       </div>
       <!-- title list -->
       <div class="text-left text-3xl font-medium">Titles</div>
-      <TitleList :titles="titles" :isOwner="isOwner" />
+      <TitleList :titles="titles" :isOwner="isOwner && !loading" />
       <!-- title loading -->
       <div
         class="border bg-mainBg py-3 font-display text-lg"
