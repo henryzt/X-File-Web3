@@ -1,0 +1,307 @@
+{
+  "contractName": "IPriceRule",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "title",
+          "type": "string"
+        }
+      ],
+      "name": "getPrice",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.10+commit.fc410830\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"string\",\"name\":\"title\",\"type\":\"string\"}],\"name\":\"getPrice\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/IPriceRule.sol\":\"IPriceRule\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/IPriceRule.sol\":{\"keccak256\":\"0x96728f753f277c2fe5dc972c2441e1e7e77411a03659510e715465e3322a12d8\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://74cfdaec44ba48fa1c5515253d33816036a808effc93b932edd5cea07206b6fa\",\"dweb:/ipfs/QmdRXQeVVt3Dq3Fbto2qocuLYNRWFL2LkxXAMj3ZTbzxXt\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// SPDX-License-Identifier: MIT\n\npragma solidity ^0.8.2;\n\ninterface IPriceRule {\n  function getPrice(string memory title) external view returns (uint);\n}",
+  "sourcePath": "/home/ubuntu/X-File-Web3/contracts/IPriceRule.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/IPriceRule.sol",
+    "exportedSymbols": {
+      "IPriceRule": [
+        442
+      ]
+    },
+    "id": 443,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 434,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".2"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "33:23:2"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "IPriceRule",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "fullyImplemented": false,
+        "id": 442,
+        "linearizedBaseContracts": [
+          442
+        ],
+        "name": "IPriceRule",
+        "nameLocation": "68:10:2",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "functionSelector": "524f3889",
+            "id": 441,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getPrice",
+            "nameLocation": "92:8:2",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 437,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 436,
+                  "mutability": "mutable",
+                  "name": "title",
+                  "nameLocation": "115:5:2",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 441,
+                  "src": "101:19:2",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 435,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "101:6:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "100:21:2"
+            },
+            "returnParameters": {
+              "id": 440,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 439,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 441,
+                  "src": "145:4:2",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 438,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "145:4:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "144:6:2"
+            },
+            "scope": 442,
+            "src": "83:68:2",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 443,
+        "src": "58:95:2",
+        "usedErrors": []
+      }
+    ],
+    "src": "33:120:2"
+  },
+  "legacyAST": {
+    "absolutePath": "project:/contracts/IPriceRule.sol",
+    "exportedSymbols": {
+      "IPriceRule": [
+        442
+      ]
+    },
+    "id": 443,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 434,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".2"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "33:23:2"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "IPriceRule",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "fullyImplemented": false,
+        "id": 442,
+        "linearizedBaseContracts": [
+          442
+        ],
+        "name": "IPriceRule",
+        "nameLocation": "68:10:2",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "functionSelector": "524f3889",
+            "id": 441,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getPrice",
+            "nameLocation": "92:8:2",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 437,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 436,
+                  "mutability": "mutable",
+                  "name": "title",
+                  "nameLocation": "115:5:2",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 441,
+                  "src": "101:19:2",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 435,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "101:6:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "100:21:2"
+            },
+            "returnParameters": {
+              "id": 440,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 439,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 441,
+                  "src": "145:4:2",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 438,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "145:4:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "144:6:2"
+            },
+            "scope": 442,
+            "src": "83:68:2",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 443,
+        "src": "58:95:2",
+        "usedErrors": []
+      }
+    ],
+    "src": "33:120:2"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.10+commit.fc410830.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.4",
+  "updatedAt": "2021-12-18T15:37:03.465Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}
