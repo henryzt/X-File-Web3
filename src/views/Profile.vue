@@ -86,13 +86,7 @@ import TitleList from "@/components/TitleList.vue";
   props: {},
   watch: {
     "$store.state.solApp"() {
-      this.load();
-    },
-    $route() {
-      this.profile = null;
-      this.titles = [];
-      this.address = "Loading Address...";
-      this.load();
+      this.getTitles();
     },
   },
 })
@@ -100,7 +94,7 @@ export default class Profile extends Vue {
   titles = [];
   ens = "";
   address = "Loading Address...";
-  loading = true;
+  loading = false;
   profile = null;
 
   mounted(): void {
@@ -108,6 +102,8 @@ export default class Profile extends Vue {
   }
 
   load(): void {
+    if (this.loading) return;
+    this.loading = true;
     this.getTitles();
     this.getProfile();
   }
