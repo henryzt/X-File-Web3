@@ -1,23 +1,25 @@
 <template>
-  <div class="overlay"></div>
-  <div class="modal">
-    <div class="font-display font-extrabold text-3xl text-mainGreen mb-12">
-      {{ modalTitle }}
+  <div>
+    <div class="overlay"></div>
+    <div class="modal">
+      <div class="font-display font-extrabold text-3xl text-mainGreen mb-12">
+        {{ modalTitle }}
+      </div>
+      <div
+        class="
+          font-display font-extrabold
+          text-3xl text-mainRed
+          cursor-pointer
+          absolute
+          right-10
+          top-10
+        "
+        @click="$emit('closed')"
+      >
+        x
+      </div>
+      <slot></slot>
     </div>
-    <div
-      class="
-        font-display font-extrabold
-        text-3xl text-mainRed
-        cursor-pointer
-        absolute
-        right-10
-        top-10
-      "
-      @click="$emit('closed')"
-    >
-      x
-    </div>
-    <slot></slot>
   </div>
 </template>
 
@@ -26,12 +28,11 @@ import { Options, Vue } from "vue-class-component";
 
 @Options({
   props: {
-    modalTitle: String
+    modalTitle: String,
   },
-  emits: ["closed"]
+  emits: ["closed"],
 })
-export default class Modal extends Vue {
-}
+export default class Modal extends Vue {}
 </script>
 
 <style scoped>

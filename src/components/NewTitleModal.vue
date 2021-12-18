@@ -1,30 +1,32 @@
 <template>
-  <Modal
-    v-if="show"
-    ref="modal"
-    modalTitle="Add new Title"
-    @closed="show = false"
-  >
-    <input
-      class="border w-full h-12 px-3"
-      placeholder="type your title here"
-      v-model="content"
-      id="ens_title"
-      @keyup.enter="doSearch"
-    />
-    <div class="mt-5">
-      Your title describes you, it can be anything you want, but it cannot be
-      changed once minted. The more title you have, the more expensive a new
-      title will be.
-    </div>
-    <div
-      class="red-button mt-8 w-40 text-center mx-auto"
-      :class="[content ? '' : 'opacity-50']"
-      @click="submitTitle"
+  <transition name="fade">
+    <Modal
+      v-if="show"
+      ref="modal"
+      modalTitle="Add new Title"
+      @closed="show = false"
     >
-      Submit
-    </div>
-  </Modal>
+      <input
+        class="border w-full h-12 px-3"
+        placeholder="type your title here"
+        v-model="content"
+        id="ens_title"
+        @keyup.enter="doSearch"
+      />
+      <div class="mt-5">
+        Your title describes you, it can be anything you want, but it cannot be
+        changed once minted. The more title you have, the more expensive a new
+        title will be.
+      </div>
+      <div
+        class="red-button mt-8 w-40 text-center mx-auto"
+        :class="[content ? '' : 'opacity-50']"
+        @click="submitTitle"
+      >
+        Submit
+      </div>
+    </Modal>
+  </transition>
 </template>
 
 <script lang="ts">

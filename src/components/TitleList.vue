@@ -1,21 +1,23 @@
 <template>
-  <div v-if="isOwner || titles?.length" class="border bg-mainBg py-3">
-    <div v-for="(title, index) in titles" :key="title">
-      <div class="grid grid-cols-8">
-        <div class="number">{{ index + 1 }}</div>
-        <div class="title border-dashed">
-          {{ title }}
+  <transition name="fade">
+    <div v-if="isOwner || titles?.length" class="border bg-mainBg py-3">
+      <div v-for="(title, index) in titles" :key="title">
+        <div class="grid grid-cols-8">
+          <div class="number">{{ index + 1 }}</div>
+          <div class="title border-dashed">
+            {{ title }}
+          </div>
+        </div>
+      </div>
+      <!-- add new -->
+      <div v-if="isOwner" class="grid grid-cols-8 cursor-pointer">
+        <div class="number">+</div>
+        <div class="title opacity-60 text-mainGreen" @click="openNewTitleModal">
+          Add a new title
         </div>
       </div>
     </div>
-    <!-- add new -->
-    <div v-if="isOwner" class="grid grid-cols-8 cursor-pointer">
-      <div class="number">+</div>
-      <div class="title opacity-60 text-mainGreen" @click="openNewTitleModal">
-        Add a new title
-      </div>
-    </div>
-  </div>
+  </transition>
   <NewTitleModal ref="modal" />
 </template>
 
