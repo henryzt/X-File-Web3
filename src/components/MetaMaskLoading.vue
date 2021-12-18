@@ -1,11 +1,15 @@
 <template>
-  <div v-if="$store.state.metaMaskLoading">
-    <div class="overlay"></div>
-    <div class="modal">
-      <img class="animate-pulse" src="/img/MetaMask.png" />
-      <div class="text-xs text-center font-bold">Waiting for confirmation...</div>
+  <transition name="fade">
+    <div v-if="$store.state.metaMaskLoading">
+      <div class="overlay"></div>
+      <div class="modal">
+        <img class="animate-pulse" src="/img/MetaMask.png" />
+        <div class="text-xs text-center font-bold">
+          Waiting for confirmation...
+        </div>
+      </div>
     </div>
-  </div>
+  </transition>
 </template>
 
 <script lang="ts">

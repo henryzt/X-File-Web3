@@ -28,17 +28,21 @@
           {{ ens }}.eth
         </div>
         <!-- collections -->
-        <div v-if="profile" class="my-5">
-          <span>Activity Level - </span>
-          <img
-            class="icon"
-            :src="'/img/lvs/ac' + profile.active_level + '.jpeg'"
-          />
-          <div>Account Value - {{ profile.tx_sum.toFixed(2) }} ETH</div>
-          <div>Transaction Count - {{ profile.tx_count }}</div>
-        </div>
-        <div v-else class="leading-10">No collections yet</div>
-        <div class="leading-5 text-xs">{{ address }}</div>
+        <transition name="fade" mode="out-in">
+          <div v-if="profile" class="my-5">
+            <span>Activity Level - </span>
+            <img
+              class="icon"
+              :src="'/img/lvs/ac' + profile.active_level + '.jpeg'"
+            />
+            <div>Account Value - {{ profile.tx_sum.toFixed(2) }} ETH</div>
+            <div>Transaction Count - {{ profile.tx_count }}</div>
+          </div>
+          <div v-else class="leading-10">No collections yet</div>
+        </transition>
+        <transition name="fade" mode="out-in">
+          <div class="leading-5 text-xs" :key="address">{{ address }}</div>
+        </transition>
       </div>
       <div class="w-2/3">
         <!-- welcome notice -->
@@ -142,7 +146,7 @@ export default class Profile extends Vue {
 
 <style scoped>
 .icon {
-  max-width: 30px;
+  max-height: 30px;
   display: inline;
 }
 </style>

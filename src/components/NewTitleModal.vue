@@ -3,7 +3,7 @@
     <Modal
       v-if="show"
       ref="modal"
-      modalTitle="Add new Title"
+      modalTitle="Add a new title"
       @closed="show = false"
     >
       <input
